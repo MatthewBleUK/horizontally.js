@@ -1,0 +1,39 @@
+/*
+*
+* 	Horizontally.js v1.0 
+*	https://github.com/MatthewBleUK/horizontally.js
+*
+*	@license 
+*
+*   Copyright 2022 - Created by Matthew Bleathman
+*
+*/
+
+html, body {
+	min-width: 100%;
+	min-height: 100%;
+    margin: 0;
+	overflow: hidden;
+}
+
+#horizontally {
+	position: fixed;
+	display: flex;
+}
+
+.section {
+	min-width: 100vw;
+    min-height: 100vh;
+}
+
+.section:nth-child(1) {
+	background: #3f51b5;
+}
+
+.section:nth-child(2) {
+	background: #4caf50;
+}
+
+.section:nth-child(3) {
+	background: #ff9800;
+}
