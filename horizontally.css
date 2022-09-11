@@ -19,6 +19,8 @@ html, body {
 #horizontally {
 	position: fixed;
 	display: flex;
+
+	transition: 1000ms; /* Sets scrolling speed */
 }
 
 .section {
