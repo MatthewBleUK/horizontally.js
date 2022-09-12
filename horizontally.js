@@ -41,6 +41,10 @@ function horizontally(userOptions) {
 	// Creates an array of all the sections
 	createSectionArray();
 
+	// Adds event listeners for scrolling
+	document.addEventListener("mousewheel", userScrollInput, false);
+	document.addEventListener("DOMMouseScroll", userScrollInput, false);
+
 	// Creates the on page DOM elements depending on user's options
 	if (options.arrowButtons) addArrowButtonsToDom();
 	if (options.pageSelector) addPageSelectorsToDom();
@@ -132,6 +136,7 @@ function createSectionArray() {
 		// If sections exist, push to state.sections array
 		if (sections.length > 0) {
 
+			// Add all DOM sections to state.sections array with the rest operator 
 			state.sections.push(...sections);
 
 		} else {
@@ -177,8 +182,8 @@ function getSectionInView() {
 			  numOfSections = state.sections.length;
 
 		/* Finds which section the wrapper's scroll positioning is on by subtracting the section's offset left pixel
-	 	to the client width and dividing by the number of sections. Last section to fit this criteria is the 
-		current section in viewport */ 
+	 	to the client width and dividing by the number of sections and comparing it to the wrapper x position (if larger). 
+		Last section to fit this criteria is the current section in viewport */ 
 		if (wrapperXPos > left - width / numOfSections + 1) {
 
 			currentSection = section;
@@ -188,7 +193,6 @@ function getSectionInView() {
 	});
 
 	return currentSection;
-
 
 }
 
@@ -221,6 +225,35 @@ function handleSelectorsClick(e) {
 	
 }
 
+// Handles user scroll input
+function userScrollInput(e) {
+	
+	if(!state.isScrolling) {
+
+		// > 50 and < -50 is good amount of scroll input for new and older track pad devices
+		if (e.deltaY > 50 || e.deltaY < -50) {	
+
+			// Go to next section if the user scrolls up else go to previous section
+			isScrollUp(e) ? nextSection() : previousSection();
+
+		} 
+
+	}
+
+}
+
+// Returns true if user is scrolling up
+function isScrollUp(e) {
+
+	// DeltaY represents the event vertical (Y axis) scroll amount
+	if(e.deltaY > 0) {
+
+		return true;
+
+	}
+
+}
+
 function previousSection() {
 		
 	scroll(state.previousSection);
@@ -242,7 +275,7 @@ function scroll(destination) {
 		let pixel = destination.offsetLeft;
 
 		/* The scroll function works by updating the transform: translate3d tx value. 
-		CSS transition handles the speed */
+		CSS transition in horizontally.css handles the speed */
 		options.wrapper.style.transform = `translate3d(-${pixel}px, 0px, 0px)`	
 
 		setTimeout(() => {
@@ -251,8 +284,6 @@ function scroll(destination) {
 
 			updateState();
 			
-		}, 1000 + 50);	// Waits until scroll is over + 50ms to call update state
-
+		}, 1000 + 50);	// Waits until scroll is over + 50ms to call update state. 
 	}
-
 }
