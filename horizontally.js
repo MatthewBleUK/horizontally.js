@@ -19,12 +19,14 @@ var state = {
 	previousSection: '',
 	isScrolling: false,
 	currentLeftPos: 0,
+	xTouchPos: 0,
+	yTouchPos: 0
 }
 
 var defaultOptions = {
 	wrapper: '#horizontally',
 	arrowButtons: true,
-	pageSelector: true,
+	pageSelector: true
 }
 
 var options = {}
@@ -40,6 +42,10 @@ function horizontally(userOptions) {
 
 	// Creates an array of all the sections
 	createSectionArray();
+
+	// Adds event listeners for swiping on touch screen devices 
+	document.addEventListener('touchstart', handleTouchStart, false);        
+	document.addEventListener('touchmove', handleTouchMove, false);
 
 	// Adds event listeners for scrolling
 	document.addEventListener("mousewheel", userScrollInput, false);
@@ -164,7 +170,13 @@ function updateState() {
 	If user is on the first slide, assign to the last section else decrement */
 	state.previousSection = state.currentIndex === 0 ? state.sections[state.sections.length - 1] : state.sections[state.currentIndex  - 1];
 
-	addActiveClassToSelectors();
+	if(options.pageSelector == true) {
+
+		let pageSelectors = document.querySelectorAll('#page-selector ul li')
+
+		addActiveClassToList(pageSelectors);
+		
+	} 
 
 }
 
@@ -196,23 +208,16 @@ function getSectionInView() {
 
 }
 
-function addActiveClassToSelectors() {
+function addActiveClassToList(element) {
 
-	let pageSelectorLi = document.querySelectorAll('#page-selector ul li');
-
-	// Removes active class from each circle page selector li
-	pageSelectorLi.forEach(anchor => {
-
-		anchor.classList.remove('active');
-		
+	element.forEach(item => {
+		item.classList.remove('active');
 	});
 
-	let pageSelectorLiActive = document.querySelector(`#page-selector ul li:nth-child(${state.currentIndex + 1})`);
-
-	// Adds active class by using the index of the current section + 1
-	pageSelectorLiActive.classList.add('active');
+	element[state.currentIndex].classList.add('active'); 
 
 }
+
 
 function handleSelectorsClick(e) {
 
@@ -224,6 +229,53 @@ function handleSelectorsClick(e) {
 	scroll(state.sections[index]);
 	
 }
+
+/* The following three functions were modified from a stackoverflow answer and handles the user touch swipe input.
+   Credits: https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android */
+
+function getTouches(e) {
+
+	return e.touches;
+
+}                                                     
+                                                                         
+function handleTouchStart(e) {
+
+    const firstTouch = getTouches(e)[0];  
+
+	// Stores the first touch position on the x and y axis 
+    state.xTouchPos = firstTouch.clientX;                                      
+    state.yTouchPos = firstTouch.clientY;        
+
+};                                                
+                                                                         
+function handleTouchMove(e) {
+
+    if (!state.xTouchPos || !state.yTouchPos) { return; }
+
+    var xUp = e.touches[0].clientX;                                    
+    var yUp = e.touches[0].clientY;
+
+	// Stores the difference the user swiped in each direction 
+    var xDiff = state.xTouchPos - xUp;
+    var yDiff = state.yTouchPos - yUp;
+	
+	// Compares the results to find out which axis direction was larger
+    if (Math.abs(xDiff) > Math.abs(yDiff)) { 
+		
+		xDiff > 0 ? nextSection() : previousSection(); 
+
+    } else {
+
+		yDiff > 0 ? nextSection() : previousSection();     
+
+    }     
+	
+	// Resets values
+	state.xTouchPos = 0;                                                        
+	state.yTouchPos = 0;
+
+};
 
 // Handles user scroll input
 function userScrollInput(e) {
