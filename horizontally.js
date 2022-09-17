@@ -25,6 +25,7 @@ var state = {
 
 var defaultOptions = {
 	wrapper: '#horizontally',
+	speed: 200,
 	arrowButtons: true,
 	pageSelector: true
 }
@@ -42,6 +43,9 @@ function horizontally(userOptions) {
 
 	// Creates an array of all the sections
 	createSectionArray();
+
+	// Sets the scrolling speed
+	setScrollSpeed();
 
 	// Adds event listeners for swiping on touch screen devices 
 	document.addEventListener('touchstart', handleTouchStart, false);        
@@ -154,6 +158,12 @@ function createSectionArray() {
 
 }
 
+function setScrollSpeed() {
+
+	options.wrapper.style.transition = String(options.speed) + 'ms';
+
+}
+
 // Main function to update the state
 function updateState() {
 
@@ -230,7 +240,7 @@ function handleSelectorsClick(e) {
 	
 }
 
-/* The following three functions were modified from a stackoverflow answer and handles the user touch swipe input.
+/* The following three functions handles the user touch swipe input and was modified from givanse's answer.
    Credits: https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android */
 
 function getTouches(e) {
@@ -245,7 +255,9 @@ function handleTouchStart(e) {
 
 	// Stores the first touch position on the x and y axis 
     state.xTouchPos = firstTouch.clientX;                                      
-    state.yTouchPos = firstTouch.clientY;        
+    state.yTouchPos = firstTouch.clientY;      
+	
+	console.log(state.xTouchPos);
 
 };                                                
                                                                          
@@ -255,6 +267,8 @@ function handleTouchMove(e) {
 
     var xUp = e.touches[0].clientX;                                    
     var yUp = e.touches[0].clientY;
+
+	console.log(e.touches[0].clientX);
 
 	// Stores the difference the user swiped in each direction 
     var xDiff = state.xTouchPos - xUp;
@@ -336,6 +350,6 @@ function scroll(destination) {
 
 			updateState();
 			
-		}, 1000 + 50);	// Waits until scroll is over + 50ms to call update state. 
+		}, options.speed + 50);		// Waits until scroll is over + 50ms to call update state
 	}
 }
