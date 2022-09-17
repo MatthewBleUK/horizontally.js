@@ -55,6 +55,9 @@ function horizontally(userOptions) {
 	document.addEventListener("mousewheel", userScrollInput, false);
 	document.addEventListener("DOMMouseScroll", userScrollInput, false);
 
+	// Adds resize event listener to window
+	window.addEventListener('resize', handleWindowResize);
+
 	// Creates the on page DOM elements depending on user's options
 	if (options.arrowButtons) addArrowButtonsToDom();
 	if (options.pageSelector) addPageSelectorsToDom();
@@ -238,6 +241,20 @@ function handleSelectorsClick(e) {
 
 	scroll(state.sections[index]);
 	
+}
+
+// Handles window resize
+function handleWindowResize() {
+
+	// Waits 500ms and then scrolls to current section
+	// Future improvements: Wait until user has stopped resizing by comparing the left x position and then scroll
+	
+	setTimeout(() => {
+
+		scroll(state.currentSection);
+
+	}, 500);
+
 }
 
 /* The following three functions handles the user touch swipe input and was modified from givanse's answer.
