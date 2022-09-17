@@ -231,7 +231,6 @@ function addActiveClassToList(element) {
 
 }
 
-
 function handleSelectorsClick(e) {
 
 	e.preventDefault(); 

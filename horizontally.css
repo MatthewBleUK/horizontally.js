@@ -10,6 +10,7 @@
 */
 
 html, body {
+	position: fixed;	/* Prevents IOS 16 safari's strange scroll top refresh behavior */ 
 	min-width: 100%;
 	min-height: 100%;
     margin: 0;
@@ -19,11 +20,13 @@ html, body {
 #horizontally {
 	position: fixed;
 	display: flex;
+	-webkit-backface-visibility: hidden;	/* Prevents strange white flickering in MacOS Safari */
 }
 
 .section {
 	min-width: 100vw;
     min-height: 100vh;
+	-webkit-transform: translate3d(0, 0, 0);	/* Prevents strange white flickering in MacOS Safari */
 }
 
 .section:nth-child(1) {
