@@ -4,16 +4,16 @@ Horizontally.js is a vanilla JavaScript library that creates mobile-friendly sli
 
 ![Horizontally logo](logo.svg) 
 
-Try our [online demo](https://horizontaly.com).
+Try our [online demo](https://horizontally.com).
 
 </br>
 
 # Contents
-- [Personal License](#-Personal-License)
-- [Commercial License](#-Commerical-License)
-- [Usage](#-Usage)
-- [Options](#-Options)
-- [Contributors](#-Contributors)
+- [Personal License](#Personal-License)
+- [Commercial License](#Commercial-License)
+- [Usage](#Usage)
+- [Options](#Options)
+- [Contributors](#Contributors)
 
 </br>
 
@@ -31,7 +31,7 @@ View this [resource](https://choosealicense.com/licenses/gpl-3.0/) for more info
 
 For commercial uses such as non open-source sites, website templates, and other types of web applications a commercial license is needed.
 
-For more information on commercial licenses, take a look at [our site](https://horizontaly.com). 
+For more information on commercial licenses, take a look at [our site](https://horizontally.com). 
 
 </br>
 
