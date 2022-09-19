@@ -3,13 +3,14 @@
 * 	Horizontally.js v1.0 
 *	https://github.com/MatthewBleUK/horizontally.js
 *
-*	@license 
+*	@license released under GPL-3.0 for open source personal use. 
+*	For commercial use please see the readme.
 *
 *   Copyright 2022 - Created by Matthew Bleathman
 *
 */
 
-"use strict";
+import '../css/horizontally.css';
 
 var state = {
 	sections: [],
@@ -87,16 +88,17 @@ function setOptions(obj) {
 
 function addArrowButtonsToDom() {
 
-	let leftArrowHTML = `
-		<button class="arrow left" onclick='previousSection()'>
+	const leftArrowHTML = `
+		<button class="arrow left">
 			<svg width="40" height="60" xmlns="http://www.w3.org/2000/svg" version="1.1">
 				<polyline points="30 10 10 30 30 50" stroke="#172529" stroke-width="4" stroke-linecap="butt" fill="none" stroke-linejoin="round" shape-rendering="geometricPrecision"></polyline>
 			</svg>
 		</button>
 	`;
 
-	let rightArrowHTML = `
-		<button class="arrow right" onclick='nextSection()'>
+	const rightArrowHTML = `
+
+		<button class="arrow right">
 			<svg width="40" height="60" xmlns="http://www.w3.org/2000/svg" version="1.1">
 				<polyline points="10 10 30 30 10 50" stroke="#172529" stroke-width="4" stroke-linecap="butt" fill="none" stroke-linejoin="round" shape-rendering="geometricPrecision"></polyline>
 			</svg>
@@ -106,6 +108,13 @@ function addArrowButtonsToDom() {
 	// Adds the left and right arrow button html after the wrapper
 	options.wrapper.insertAdjacentHTML("afterend", `<div id="fixed-arrows">` + leftArrowHTML + rightArrowHTML + `</div>`);
 
+	// Adds onclick listeners
+	const leftArrow = document.querySelector('.arrow.left');
+	const rightArrow = document.querySelector('.arrow.right');
+
+	leftArrow.addEventListener('click', previousSection);
+	rightArrow.addEventListener('click', nextSection);
+	
 }
 
 function addPageSelectorsToDom() {
@@ -123,8 +132,7 @@ function addPageSelectorsToDom() {
 	// Adds the circle page selector html after the wrapper
 	options.wrapper.insertAdjacentHTML("afterend", `<div id="page-selector"><ul>` + innerHTML + `</ul></div>`);
 
-
-	let selectorLi = document.querySelectorAll('#page-selector ul li');
+	const selectorLi = document.querySelectorAll('#page-selector ul li');
 
 	// Adds a click event listener to all page selector's li elements
 	addClickListenerToNodes(selectorLi, handleSelectorsClick);
@@ -144,7 +152,7 @@ function addClickListenerToNodes(nodes, func) {
 
 function createSectionArray() {	
 
-		let sections = document.querySelectorAll('.section');
+		const sections = document.querySelectorAll('.section');
 
 		// If sections exist, push to state.sections array
 		if (sections.length > 0) {
@@ -185,7 +193,7 @@ function updateState() {
 
 	if(options.pageSelector == true) {
 
-		let pageSelectors = document.querySelectorAll('#page-selector ul li')
+		const pageSelectors = document.querySelectorAll('#page-selector ul li')
 
 		addActiveClassToList(pageSelectors);
 		
@@ -236,7 +244,7 @@ function handleSelectorsClick(e) {
 	e.preventDefault(); 
 
 	// Gets the section index from the li circle page selector data-index attribute
-	let index = this.getAttribute('data-index'); 
+	const index = this.getAttribute('data-index'); 
 
 	scroll(state.sections[index]);
 	
@@ -272,8 +280,6 @@ function handleTouchStart(e) {
 	// Stores the first touch position on the x and y axis 
     state.xTouchPos = firstTouch.clientX;                                      
     state.yTouchPos = firstTouch.clientY;      
-	
-	console.log(state.xTouchPos);
 
 };                                                
                                                                          
@@ -281,14 +287,12 @@ function handleTouchMove(e) {
 
     if (!state.xTouchPos || !state.yTouchPos) { return; }
 
-    var xUp = e.touches[0].clientX;                                    
-    var yUp = e.touches[0].clientY;
-
-	console.log(e.touches[0].clientX);
+    const xUp = e.touches[0].clientX,
+		  yUp = e.touches[0].clientY;
 
 	// Stores the difference the user swiped in each direction 
-    var xDiff = state.xTouchPos - xUp;
-    var yDiff = state.yTouchPos - yUp;
+    const xDiff = state.xTouchPos - xUp,
+    	  yDiff = state.yTouchPos - yUp;
 	
 	// Compares the results to find out which axis direction was larger
     if (Math.abs(xDiff) > Math.abs(yDiff)) { 
@@ -354,7 +358,7 @@ function scroll(destination) {
 
 		state.isScrolling = true;
 
-		let pixel = destination.offsetLeft;
+		const pixel = destination.offsetLeft;
 
 		/* The scroll function works by updating the transform: translate3d tx value. 
 		CSS transition in horizontally.css handles the speed */
@@ -369,3 +373,5 @@ function scroll(destination) {
 		}, options.speed + 50);		// Waits until scroll is over + 50ms to call update state
 	}
 }
+
+export default horizontally;

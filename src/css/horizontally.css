@@ -3,7 +3,8 @@
 * 	Horizontally.js v1.0 
 *	https://github.com/MatthewBleUK/horizontally.js
 *
-*	@license 
+*	@license released under GPL-3.0 for open source personal use. 
+*	For commercial use please see the readme.
 *
 *   Copyright 2022 - Created by Matthew Bleathman
 *
@@ -27,18 +28,6 @@ html, body {
 	min-width: 100vw;
     min-height: 100vh;
 	-webkit-transform: translate3d(0, 0, 0);	/* Prevents strange white flickering in MacOS Safari */
-}
-
-.section:nth-child(1) {
-	background: #3f51b5;
-}
-
-.section:nth-child(2) {
-	background: #4caf50;
-}
-
-.section:nth-child(3) {
-	background: #ff9800;
 }
 
 /* DOM arrow button styles */ 

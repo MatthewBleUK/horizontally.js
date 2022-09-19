@@ -1,0 +1,36 @@
+{
+  "name": "horizontally.js",
+  "version": "1.0.0",
+  "description": "A JavaScript library to create mobile-friendly slide show style web pages",
+  "main": "dist/horizontally.esm.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewBleUK/horizontally.js.git"
+  },
+  "keywords": [
+    "javascript",
+    "library",
+    "slide",
+    "show",
+    "horizontal"
+  ],
+  "author": "Matthew Bleathman",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MatthewBleUK/horizontally.js/issues"
+  },
+  "homepage": "https://github.com/MatthewBleUK/horizontally.js#readme",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "rollup": "^2.79.0",
+    "rollup-plugin-import-css": "^3.0.3",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
