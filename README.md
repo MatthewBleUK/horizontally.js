@@ -2,20 +2,16 @@
 
 Horizontally.js is a vanilla JavaScript library that creates mobile-friendly slide show style web pages. 
 
-![Horizontally logo](logo.svg) 
-
-Try our [online demo](https://horizontally.com).
-
-</br>
+<!-- Try our [online demo](https://horizontally.com). -->
 
 # Contents
 - [Personal License](#Personal-License)
 - [Commercial License](#Commercial-License)
 - [Usage](#Usage)
+- [NPM Usage](#NPM-Usage)
+- [CDN Usage](#CDN-Usage)
 - [Options](#Options)
 - [Contributors](#Contributors)
-
-</br>
 
 # Personal License
 
@@ -25,85 +21,93 @@ This means you are free to modify and distribute under the GPL license if the co
 
 View this [resource](https://choosealicense.com/licenses/gpl-3.0/) for more information on the GPL License. 
 
-</br>
-
 # Commercial License
 
 For commercial uses such as non open-source sites, website templates, and other types of web applications a commercial license is needed.
 
-For more information on commercial licenses, take a look at [our site](https://horizontally.com). 
-
-</br>
+<!-- For more information on commercial licenses, take a look at our site ().  -->
 
 # Usage
 
-To use Horizontally.js you need to include the css and js files, add the correct HTML structure, and initialize the project.
-</br>
-</br>
+To use Horizontally.js you need to include the css and javascript files, add the correct HTML structure, and initialize the project. 
 
-### Including CSS and JS files:
+The minified css and javascript files are also available. 
+
+### Including CSS and Javascript files:
 
 ```html
 <link rel="stylesheet" type="text/css" href="horizontally.css">
 
 <script type="text/javascript" src="horizontally.js"></script>
 ```
-</br>
 
 ### HTML structure:
 
 ```html
 <div id="horizontally">
-	<div class="section"></div>
-	<div class="section"></div>
-	<div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
 </div>
 ```
-</br>
 
 ### Initialize project:
 
 ```javascript
 new horizontally({
-	wrapper: '#horizontally',
-	speed: 1000,
-	arrowButtons: true,
-	pageSelector: true,
+  wrapper: '#horizontally',
+  speed: 1000,
+  arrowButtons: true,
+  pageSelector: true,
 });
 ```
-</br>
+
+### Add CSS styles:
+
+If this is your first time using horizontally.js, you may want to add CSS styles to the sections to visually represent them. 
+
+```css
+.section:nth-child(1) {
+	background: #3f51b5;
+}
+```
+
+# NPM Usage
+
+NPM can also be used to install horizontally.js.
+
+```
+npm install horizontally.js
+```
+
+# CDN
+
+Alternatively, instead of downloading or importing the files it is possible to use our CDN.
+
 
 # Options 
 
 Horizontally can be used with four options. 
-
-</br>
 
 The wrapper option enables you to change the HTML ID name of the wrapper. The default option is #horizontally.
 ```javascript
 wrapper: '#horizontally'
 ```
 
-</br>
-
-The speed option enables you to change the scroll ms duration. For best results, and to prevent buggy behavior a speed above 300ms is a good choice. The default scroll speed is set to 1000ms.
+The speed option enables you to change the scroll ms duration. To prevent users accidentally scrolling twice a speed above 300ms is a good choice. The default scroll speed is set to 1000ms.
 ```javascript
 speed: 1000
 ```
-</br>
 
 The arrowButtons options lets you to enable or disable the DOM onscreen arrow buttons.
 ```javascript
 arrowButtons: true
 ```
-</br>
 
 The pageSelector options lets you to enable or disable the DOM circle page selector / navigation buttons.
 ```javascript
 pageSelector: true
 ```
-
-</br>
 
 # Contributors
 
@@ -111,4 +115,4 @@ All contributors to this project are welcome.
 
 A detailed list of all the feature features and bugs can be found inside the issues tab.
 
-Simply fork the project, send a PR request when done, and I will review it.
+Simply fork the project, send a PR request when you are done, and I will review it.
