@@ -1,8 +1,8 @@
 {
     "name": "horizontally.js",
     "version": "1.0.0",
-    "description": "A JavaScript library to create mobile-friendly slide show style web pages",
-    "main": "dist/horizontally.esm.min.js",
+    "description": "A lightweight JavaScript library to create fullpage, responsive, slideshow/carousel web applications with mouse and touch scroll support",
+    "main": "dist/horizontally.min.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "rollup -c",
