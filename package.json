@@ -1,6 +1,6 @@
 {
     "name": "horizontally.js",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "A lightweight JavaScript library to create fullpage, responsive, slideshow/carousel web applications with mouse and touch scroll support",
     "main": "dist/horizontally.min.js",
     "scripts": {

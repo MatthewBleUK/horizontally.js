@@ -85,7 +85,7 @@ If this is your first time using horizontally.js, you may want to add CSS styles
 
 # NPM Usage
 
-Horizontally.js is also available on NPM and can be installed via the command line.
+Horizontally.js is also available on NPM and can be installed via the command line. When using NPM the CSS and JS files need to be included/imported for the package to work correctly.
 
 ```
 npm install horizontally.js
