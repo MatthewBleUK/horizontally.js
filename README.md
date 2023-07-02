@@ -4,9 +4,9 @@
 
 <strong>Horizontally.js</strong> is a lightweight JavaScript library that creates full page, responsive, slideshow/carousel web applications with mouse and touch scroll support.
 
-For further instructions and examples make sure to read our <a href="https://matthewbleuk.github.io/horizontally.js-docs/">documentation web page</a>.
+For further instructions and examples make sure to read our <a href="https://matthewbleuk.github.io/horizontally.js-docs/" target="_blank">documentation web page</a>.
 
-Take a look at our [CodePen demo](https://horizontally.com).
+Take a look at our <a href="https://codepen.io/matthew98/pen/poQeapN" target="_blank">CodePen demo</a>
 
 # Contents
 
