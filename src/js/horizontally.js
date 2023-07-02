@@ -10,6 +10,8 @@
  *
  */
 
+import "../css/horizontally.css"; // For bundler (rollup) to locate file
+
 var state = {
     sections: [],
     currentSection: "",
