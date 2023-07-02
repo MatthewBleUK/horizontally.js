@@ -28,11 +28,7 @@ body {
 .section {
     min-width: 100vw;
     min-height: 100vh;
-    -webkit-transform: translate3d(
-        0,
-        0,
-        0
-    ); /* Prevents strange white flickering in MacOS Safari */
+    -webkit-transform: translate3d(0, 0, 0); /* Prevents strange white flickering in MacOS Safari */
 }
 
 /* DOM arrow button styles */
