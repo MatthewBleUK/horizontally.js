@@ -330,3 +330,5 @@ function scroll(destination) {
         }, options.speed + 50); // Waits until scroll is over + 50ms to call update state
     }
 }
+
+export default horizontally;
