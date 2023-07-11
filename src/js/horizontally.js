@@ -10,7 +10,7 @@
  *
  */
 
-import "../css/horizontally.css"; // For bundler (rollup) to locate file
+// import "../css/horizontally.css"; 	// Uncomment for bundler (rollup) to locate file
 
 var state = {
     sections: [],
