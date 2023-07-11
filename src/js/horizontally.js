@@ -8,7 +8,7 @@
  *
  *   Copyright 2023 - Created by Matthew Bleathman
  *
- */Update horizontally.js for CDN to work with Codepen
+ */
 
 // import "../css/horizontally.css"; 	// Uncomment for bundler (rollup) to locate file
 
